@@ -3,14 +3,19 @@
 to do: 
 - menu page! (pixel font, level select, aesthetic to fit the images)
 - a bunch of levels
-- figure out how grids work, how to color select, zooming in and out
+- figure out how grids work, how to color select, zooming in and out (solved)
+- make different webpages per level, add transitions between them
 
 general flow:
 first page is the menu, with a built in level select already
-a modal (or something?) that asks you if you want a tutorial that takes you to an easy image
+after user selects level it brings u to that page
 level selected
-brings user to the page
+actual paint by numbers
 ??
-level complete page
-go back to menu
+level complete page (prolly a modal that asks if you wanna go to the next level, restart, or menu)
 Repeat
+
+design and theme:
+(possible thoughts lng to, feel free to suggest)
+- pastel colors? cutesy stuff idk
+- cold blue tones and darker colors
