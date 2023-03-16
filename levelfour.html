@@ -1,3 +1,217 @@
-nothing yet, just copy/paste the fourth level when it's done
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-spacing: 0px;
+      margin: auto;
+      border: 2.5px solid black;
+    }
 
-PLACEHOLDER!!
+    .cell {
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    td {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+    }
+
+    #palette td{
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+<body id="body">
+  <table id="canvas"></table><br>
+  <table id="palette"></table>
+
+  <script>
+    var click = false;
+    addEventListener("mousedown", (event) => { click = true });
+    addEventListener("mouseup", (event) => { click = false });
+
+    const canvas = document.getElementById('canvas');
+    const palette = document.getElementById('palette');
+
+    var color = 0;
+    var colorPalette = [];
+    
+    function setColor(x){
+      color = x;
+      document.getElementById('body').style.backgroundColor = colorPalette[color];
+    }
+
+    var canvasP = {
+      x: 0,
+      y: 0
+    };
+    var gridCanvas = [];
+    var gridColors = [];
+    var cellCount = 0;
+    var cellColoredCount = 0;
+
+    function setCanvas(x,y) {
+      canvas.innerHTML = '';
+      x = x < 1 ? 1 : x;
+      y = y < 1 ? 1 : y;
+      canvasP.x = x;
+      canvasP.y = y;
+      for (var iy = 1; iy <= y; iy++) {
+        var a = '<tr>';
+        for (var ix = 1; ix <= x; ix++) {
+          a = a + '<td id="'+ix+'-'+iy+'" class="cell" onmouseenter="colorGrid(event)" onclick="colorGrid(event, 0)" style="background-color: #fff;"></td>';
+        }
+        a = a + '</tr>';
+        canvas.innerHTML = canvas.innerHTML + a;
+      }
+      var c = [];
+      var c1 = [];
+      for (var ix = 1; ix <= x; ix++) {
+        var b = [];
+        var b1 = [];
+        for (var iy = 1; iy <= y; iy++) {
+          b.push(0);
+          b1.push(false);
+        }
+        c.push(b);
+        c1.push(b1);
+      }
+      gridCanvas = c1;
+      gridColors = c;
+      cellCount = x * y;
+      cellColoredCount = 0;
+    }
+
+    function cellResize() {
+      document.getElementsByClassName('cell').forEach((item) => {item.style.width = (75 / canvasP.x) + 'vw';item.style.height = (75 / canvasP.x) + 'vw';});
+    }
+
+    function setPalette(x) {
+      color = 0
+      var a = '<tr>';
+      levels[x].colors.forEach((item, index) => {a = a + '<td style="background-color: '+item+';" onclick="setColor('+index+')"></td>';});
+      palette.innerHTML = a + '</tr>';
+      colorPalette = levels[x].colors; 
+    }
+
+    function setCanvasColors(x) {
+      var a = 0;
+      for (var iy = 1; iy <= canvasP.y; iy++) {
+        for (var ix = 1; ix <= canvasP.x; ix++) {
+          document.getElementById(ix+'-'+iy).innerHTML = x[a] != undefined ? x[a] : 0;
+          gridColors[ix-1][iy-1] = x[a] != undefined ? x[a] : 0;
+          a++;
+        }
+      }
+    }
+
+    function colorGrid(event, x) {
+      if (cellColoredCount >= cellCount) {return;}
+      if (x == undefined) {
+        if (click != true) {return;}
+      }
+      var a = event.target.id.split('-');
+      var x = Number(a[0]);
+      var y = Number(a[1]);
+      if (gridColors[x-1][y-1] == color) {
+        document.getElementById(x + '-' + y).style.backgroundColor = colorPalette[color];
+        document.getElementById(x + '-' + y).style.color = colorPalette[color];
+        if(gridCanvas[x-1][y-1] == false) {
+          cellColoredCount++;
+          gridCanvas[x-1][y-1] = true;
+        }
+      }
+      if (cellColoredCount >= cellCount) {
+        level++;
+        if (level < levels.length) {
+          levelup(level);
+        } else {
+          level = 0;
+          levelup(level);
+        }
+      }
+    }
+
+    var level = 0;
+    
+    const levels = [{
+      x: 17,
+      y: 13,
+      colors: ['white', '#ec1e7a', '#f676b1', '#f9a5cb', '#fbd1e5', '#b2ddfd', '#8ccaf9', '#42a7f5', '#d8eefd'],
+      canvas: [
+       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,
+       0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,
+       0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,
+       0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,
+       0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,
+       0,0,0,2,2,2,2,2,2,2,2,2,2,5,5,5,5,2,2,2,2,2,2,2,2,2,2,0,0,0,
+       0,0,0,2,2,2,2,2,2,2,2,5,5,6,6,6,6,5,2,2,2,2,2,2,2,2,2,0,0,0,
+       0,0,2,2,2,2,2,2,2,2,5,5,6,6,5,5,5,6,5,2,2,2,2,2,2,2,2,2,0,0,
+       0,0,2,2,2,2,2,2,5,5,5,6,6,5,5,2,2,5,5,5,2,2,2,2,2,2,2,2,0,0,
+       0,0,3,3,3,3,5,5,5,6,6,7,6,5,3,3,3,3,5,8,3,3,3,3,3,3,3,3,0,0,
+       0,0,3,3,3,5,5,5,6,6,6,7,6,3,3,8,3,3,8,8,3,3,3,3,3,3,3,3,0,0,
+       0,0,3,3,5,5,5,6,6,6,7,7,6,3,3,3,8,8,8,3,3,3,3,3,3,3,3,3,0,0,
+       0,0,0,5,5,5,5,6,6,7,7,7,6,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,
+       0,0,0,5,5,5,6,6,6,7,7,7,7,6,3,3,3,3,3,3,3,3,3,3,6,6,6,0,0,0,
+       0,0,0,0,5,6,6,7,7,7,7,7,7,7,6,4,4,4,4,4,4,6,6,6,6,7,0,0,0,0,
+       0,0,0,0,6,6,7,7,7,7,7,7,7,7,7,6,4,4,4,6,6,6,6,6,7,7,0,0,0,0,
+       0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,7,7,7,0,0,0,0,0,
+       0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,6,6,7,7,7,7,7,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{
+        x: 16,
+        y: 16,
+        colors: ['white', '#124f59', '#69e3e6', '#ac5e0b'],
+        canvas: [
+          1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+          1,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,
+          1,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,
+          0,1,2,2,2,1,0,0,0,0,0,0,0,0,0,0,
+          0,0,1,2,2,2,1,0,0,0,0,0,0,0,0,0,
+          0,0,0,1,2,2,2,1,0,0,0,0,0,0,0,0,
+          0,0,0,0,1,2,2,2,1,0,0,0,1,1,0,0,
+          0,0,0,0,0,1,2,2,2,1,0,1,2,1,0,0,
+          0,0,0,0,0,0,1,2,2,2,1,2,1,0,0,0,
+          0,0,0,0,0,0,0,1,2,2,1,2,1,0,0,0,
+          0,0,0,0,0,0,0,0,1,1,2,1,0,0,0,0,
+          0,0,0,0,0,0,0,1,2,2,1,3,3,0,0,0,
+          0,0,0,0,0,0,1,2,1,1,0,3,3,3,0,0,
+          0,0,0,0,0,0,1,1,0,0,0,0,3,3,1,1,
+          0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,
+          0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,]},{
+        x: 16,
+        y: 16,
+        colors: ['black', '#42a7f5', '#f9a4cb', '#f377b1', '#ed1f7a'],
+        canvas: [
+          
+        ]
+       }
+    ];
+    function levelup(x) {
+      setColor(0);
+      setPalette(x);
+      setCanvas(levels[x].x, levels[x].y);
+      setCanvasColors(levels[x].canvas);
+    }
+
+    levelup(level);
+</script>
+</body>
+</html>
