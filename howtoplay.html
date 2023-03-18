@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PixelPainters Menu</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+        <!-- font-family: 'Fredoka One', cursive; -->
+        <body>
+            <div class="main">
+                <h1>Pixel Painters</h1>
+                <h2>How do you play?</h2>
+                <p>To play our game is a simple task. All you need to do is fill in all the boxes with the right colors before your time runs out. If you run out of time before you are able to complete the painting, the level resets and you have to start all over again! You may be wondering, "There's a timer? But how in the world does one know what color goes where before the time runs out?" Well don't fret my friend! Each color and box has a coresponding number to guide you! In case you are doubting your skills, we recommend starting with our first and most simple level to get you going. Have fun painter!</p>
+
+                <h2>Tips and Tricks</h2>
+                <p>Need a hand, painter? Here are a few tips to make your life easier.</p>
+                <ul>
+                    <li>Rather than clicking each box one by one, you can drag your cursor over the canvas just like a real painting!</li>
+                    <li>You can select a color from the bottom of the canvas.</li>
+                    <li>The numbering always starts at 0, which is the background color. So we suggest starting the painting with that</li>
+                    <li>You can zoom the screen in and out as much as you need</li>
+                    <li>[Warning: These tips and tricks are unfortunatey non-applicable sa paghahanap ng pagmamahal niya]</li>
+                </ul>
+                
+                <div class="button">
+                    <button class="btn btn-primary" onclick="menu()">Back to Menu</button>
+                </div>
+            </div>
+        </body>
+        <style>
+            body{ 
+                background-image: url('pixelartbg.png');
+                font-family: 'Fredoka One', cursive;
+                text-align: center;
+                margin: 30px;
+            }
+            .main{
+                background-color: rgba(255, 255, 255, 0.6);
+                border-radius: 15px;
+            }
+            h1{
+                padding: 20px;
+                font-size: 100px;
+                margin: 30px;
+            }
+            p{
+                margin-top: 20px;
+                margin-left: 300px;
+                margin-right: 300px;
+                padding-bottom: 20px;
+            }
+            .button{
+                padding: 20px;
+            }
+        </style>
+        <script>
+            function menu(){
+                location.replace("Menu.html")
+            }
+        </script>
+    </head>
+</html>
