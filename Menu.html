@@ -22,12 +22,24 @@
                 <h2 style="padding: 20px; margin-top: 30px;">Level Select</h2>
 
                 <div class="lvlbuttons">
-                    <button class="btn btn-primary" onclick="level1()">LEVEL 1</button>
-                    <button class="btn btn-primary" onclick="level2()">LEVEL 2</button>
-                    <button class="btn btn-primary" onclick="level3()">LEVEL 3</button>
-                    <button class="btn btn-primary" onclick="level4()">LEVEL 4</button>
-                    <button class="btn btn-primary" onclick="level4()">LEVEL 5</button>
-                    <button class="btn btn-primary" onclick="bonus()">BONUS LEVEL</button>
+                    <ul>
+                        <li style="display: inline; padding-right: 34px;"><button class="btn btn-primary" onclick="level1()">LEVEL 1</button></li>
+                        <li style="display: inline; padding-right: 34px;"><button class="btn btn-primary" onclick="level2()">LEVEL 2</button></li>
+                        <li style="display: inline; padding-right: 34px;"><button class="btn btn-primary" onclick="level3()">LEVEL 3</button></li>
+                        <li style="display: inline; padding-right: 34px;"><button class="btn btn-primary" onclick="level4()">LEVEL 4</button></li>
+                        <li style="display: inline; padding-right: 34px;"><button class="btn btn-primary" onclick="level5()">LEVEL 5</button></li>
+                        <li style="display: inline; padding-right: 34px;"><button class="btn btn-primary" onclick="bonus()">BONUS LEVEL</button></li>
+                      </ul>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+
+                <div class="aboutthedevsbutton">
+                    <button class="btn btn-primary" onclick="aboutus()">About the Developers</button>
                 </div>
             </div>
         </body>
@@ -56,6 +68,13 @@
             .lvlbuttons{
                 padding-bottom: 20px;
             }
+            .aboutthedevsbutton{
+                padding-top: 300px;
+                padding-bottom: 50px;
+            }
+            .btn{
+                padding: 10px;
+            } 
         </style>
         <script>
             function howtoplay(){
@@ -78,6 +97,9 @@
             }
             function bonus(){
                 location.replace("bonuslvl.html")
+            }
+            function aboutus(){
+                location.replace("aboutus.html")
             }
         </script>
     </head>
