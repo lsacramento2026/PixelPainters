@@ -11,15 +11,25 @@
         <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
         <!-- font-family: 'Fredoka One', cursive; -->
         <body>
-            <div class="text">
+            <div class="main">
                 <h1>Pixel Painters</h1>
+
                 <h2>Welcome, painter!</h2>
-                <p>To play our game is a simple task. All you need to do is fill in the boxes with the right colors. You may be wondering, "how in the world does one know what color goes where?" Well don't fret my friend! Each color and box has a coresponding number to guide you! Have fun, painter!</p>
+                <p>A colorful journey awaits!</p>
+
+                <button class="btn btn-primary" onclick="howtoplay()">How to Play</button>
+
+                <h2 style="padding: 20px; margin-top: 30px;">Level Select</h2>
+
+                <div class="lvlbuttons">
+                    <button class="btn btn-primary" onclick="level1()">LEVEL 1</button>
+                    <button class="btn btn-primary" onclick="level2()">LEVEL 2</button>
+                    <button class="btn btn-primary" onclick="level3()">LEVEL 3</button>
+                    <button class="btn btn-primary" onclick="level4()">LEVEL 4</button>
+                    <button class="btn btn-primary" onclick="level4()">LEVEL 5</button>
+                    <button class="btn btn-primary" onclick="bonus()">BONUS LEVEL</button>
+                </div>
             </div>
-
-            <h2>Level Select</h2>
-            
-
         </body>
         <style>
             body{ 
@@ -28,22 +38,46 @@
                 text-align: center;
                 margin: 30px;
             }
-            .text{
+            .main{
                 background-color: rgba(255, 255, 255, 0.6);
                 border-radius: 15px;
             }
             h1{
+                padding: 20px;
                 font-size: 100px;
                 margin: 30px;
             }
             p{
+                margin-top: 20px;
                 margin-left: 300px;
                 margin-right: 300px;
+                padding-bottom: 20px;
+            }
+            .lvlbuttons{
+                padding-bottom: 20px;
             }
         </style>
         <script>
-            function tomenu(){
-                location.replace("Menu.html")
+            function howtoplay(){
+                location.replace("howtoplay.html")
+            }
+            function level1(){
+                location.replace("level1.html")
+            }
+            function level2(){
+                location.replace("level2.html")
+            }
+            function level3(){
+                location.replace("level3.html")
+            }
+            function level4(){
+                location.replace("level4.html")
+            }
+            function level5(){
+                location.replace("level5.html")
+            }
+            function bonus(){
+                location.replace("bonuslvl.html")
             }
         </script>
     </head>
