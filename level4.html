@@ -27,6 +27,20 @@
       width: 50px;
       height: 50px;
     }
+    
+    .numbers{
+        text-align: center;
+    }
+    ul{
+        font-family: 'Fredoka One', cursive; 
+        font-size: 20px;
+        display: inline-block;
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
   </style>
 </head>
 <body id="body">
@@ -175,34 +189,7 @@
        0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,0,
        0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,0,0,0,
        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{
-        x: 16,
-        y: 16,
-        colors: ['white', '#124f59', '#69e3e6', '#ac5e0b'],
-        canvas: [
-          1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
-          1,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,
-          1,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,
-          0,1,2,2,2,1,0,0,0,0,0,0,0,0,0,0,
-          0,0,1,2,2,2,1,0,0,0,0,0,0,0,0,0,
-          0,0,0,1,2,2,2,1,0,0,0,0,0,0,0,0,
-          0,0,0,0,1,2,2,2,1,0,0,0,1,1,0,0,
-          0,0,0,0,0,1,2,2,2,1,0,1,2,1,0,0,
-          0,0,0,0,0,0,1,2,2,2,1,2,1,0,0,0,
-          0,0,0,0,0,0,0,1,2,2,1,2,1,0,0,0,
-          0,0,0,0,0,0,0,0,1,1,2,1,0,0,0,0,
-          0,0,0,0,0,0,0,1,2,2,1,3,3,0,0,0,
-          0,0,0,0,0,0,1,2,1,1,0,3,3,3,0,0,
-          0,0,0,0,0,0,1,1,0,0,0,0,3,3,1,1,
-          0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,
-          0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,]},{
-        x: 16,
-        y: 16,
-        colors: ['black', '#42a7f5', '#f9a4cb', '#f377b1', '#ed1f7a'],
-        canvas: [
-          
-        ]
-       }
+       0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
     ];
     function levelup(x) {
       setColor(0);
@@ -212,6 +199,19 @@
     }
 
     levelup(level);
-</script>
+  </script>
+  <div class="numbers">
+    <ul>
+        <li style="display: inline; padding-right: 34px;"><b>0</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>1</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>2</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>3</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>4</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>5</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>6</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>7</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>8</b></li>
+      </ul>
+  </div>
 </body>
 </html>
