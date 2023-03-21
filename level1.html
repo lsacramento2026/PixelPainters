@@ -47,8 +47,8 @@
         text-align: left;
         background-color: rgba(255, 255, 255, 0.6);
         border-radius: 15px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
     .menubutton{
         text-align: center;
@@ -58,11 +58,31 @@
         padding: 10px;
         font-family: 'Fredoka One', cursive;
     }
+    #countdown{
+        text-align: center;
+        font-family: 'Fredoka One', cursive;
+        color: red;
+    }
   </style>
 </head>
 <body id="body">
   <table id="canvas"></table><br>
+
+  <div class="numbers">
+    <ul>
+        <li style="display: inline; padding-right: 34px;"><b>0</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>1</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>2</b></li>
+        <li style="display: inline; padding-right: 34px;"><b>3</b></li>
+      </ul>
+  </div>
+  
   <table id="palette"></table>
+
+  <div id="countdown">
+    <h2>Time Left:</h2>
+    <p id="clocc"></p>
+    </div>
 
   <script>
     var click = false;
@@ -209,16 +229,33 @@
     function menu(){
         location.replace("Menu.html")
     }
-  </script>
 
-  <div class="numbers">
-    <ul>
-        <li style="display: inline; padding-right: 34px;"><b>0</b></li>
-        <li style="display: inline; padding-right: 34px;"><b>1</b></li>
-        <li style="display: inline; padding-right: 34px;"><b>2</b></li>
-        <li style="display: inline; padding-right: 34px;"><b>3</b></li>
-      </ul>
-  </div>
+    function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = 0;
+            level = 0;
+            levelup(level)
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var time = 20 / 2, // your time in seconds here
+        display = document.querySelector('#clocc');
+    startTimer(time, display);
+};
+
+  </script>
 
   <div class="menubutton">
     <button class="btn btn-primary" onclick="menu()">Back to Menu</button>
