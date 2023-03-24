@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PixelPainters Level 2</title>
+    <title>PixelPainters Level 3</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <!-- font-family: 'Fredoka One', cursive; -->
-    
+
   <style>
     table {
       border-spacing: 0px;
@@ -37,7 +37,7 @@
       width: 50px;
       height: 50px;
     }
-
+    
     .numbers{
         text-align: center;
     }
@@ -271,7 +271,7 @@
 
     var level = 0;
     
-    const levels = [{
+        const levels = [{
       x: 23,
       y: 22,
       colors: ['#2474a4', '#0d354b', '#d2688e', '#eea5ca', '#e8c3e0', '#ecd0e7', '#e2d7ec', '#c5b9de', '#b7acce', '#9595ba'],
@@ -300,6 +300,7 @@
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         ]},
     ];
+
     function levelup(x) {
       setColor(0);
       setPalette(x);
@@ -314,11 +315,11 @@
     }
 
     function retry(){
-        location.replace("level2.html")
+        location.replace("level3.html")
     }
 
     function nxtlvl(){
-        location.replace("level3.html")
+        location.replace("level4.html")
     }
 
     var lose = document.getElementById ('lossmodal');
@@ -351,34 +352,35 @@ window.onload = function () {
 };
 
   </script>
-
+  
   <div class="menubutton">
     <button class="btn btn-primary" onclick="menu()">Back to Menu</button>
-  </div>
 
-  <div class="modal1content">
-    <div class="modal1header">
-      <h2>You Lost...</h2>
-    </div>
+    <div id="lossmodal" class="modal1">
 
-    <div class="modal1body">
-      <p>wow I really thought the time you had was enough.</p>
-      <p>just get better I suppose.</p>
-    </div>
-
-    <div class="retrybutton">
-      <button class="btn btn-primary" onclick="retry()">Retry?</button>
-    </div>
-
-    <div class="modal1footer">
-      <h3>SKILL ISSUE</h3>
-    </div>
-  </div>
-  </div>
-
-  <div id="winmodal" class="modal2">
-
-  <div class="modal2content">
+        <div class="modal1content">
+          <div class="modal1header">
+            <h2>You Lost...</h2>
+          </div>
+    
+          <div class="modal1body">
+            <p>wow I really thought the time you had was enough.</p>
+            <p>just get better I suppose.</p>
+          </div>
+    
+          <div class="retrybutton">
+            <button class="btn btn-primary" onclick="retry()">Retry?</button>
+          </div>
+    
+          <div class="modal1footer">
+            <h3>SKILL ISSUE</h3>
+          </div>
+        </div>
+        </div>
+    
+        <div id="winmodal" class="modal2">
+    
+        <div class="modal2content">
       <div class="modal2header">
         <h2>Congrats!</h2>
       </div>
@@ -387,16 +389,18 @@ window.onload = function () {
         <p>nice, second painting! it's a pretty neat star with a gradient</p>
         <p>proceed to the next level, or try for a faster time!</p>
       </div>
-
-      <div class="retrybutton">
-          <button class="btn btn-primary" onclick="retry()">Retry?</button>
-      </div>
-
-      <div class="nxtlvlbutton">
-          <button class="btn btn-primary" onclick="nxtlvl()">Next Level?</button>
-      </div>
       
-      </div>
-    </div>
+            <div class="retrybutton">
+                <button class="btn btn-primary" onclick="retry()">Retry?</button>
+            </div>
+    
+            <div class="nxtlvlbutton">
+                <button class="btn btn-primary" onclick="nxtlvl()">Next Level?</button>
+            </div>
+            
+            </div>
+          </div>
+
+  </div>
 </body>
 </html>
